@@ -126,7 +126,7 @@ const FoodDetails: React.FC = () => {
     if (isFavorite) {
       api.delete(`/favorites/${food.id}`);
     } else {
-      api.post('favorites', food);
+      api.post(`favorites`, food);
     }
 
     setIsFavorite(!isFavorite);
@@ -139,7 +139,7 @@ const FoodDetails: React.FC = () => {
 
     const foodTotal = food.price;
 
-    return formatValue(extraTotal + foodTotal);
+    return formatValue((extraTotal + foodTotal) * foodQuantity);
   }, [extras, food, foodQuantity]);
 
   async function handleFinishOrder(): Promise<void> {
